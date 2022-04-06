@@ -4,4 +4,8 @@ class UploadsController < ApplicationController
   def index
     @uploads = current_user.uploads
   end
+
+  def new
+    @upload = Upload.new
+  end
 end
