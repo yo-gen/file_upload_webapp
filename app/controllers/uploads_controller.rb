@@ -12,8 +12,11 @@ class UploadsController < ApplicationController
   def create
     @upload = current_user.uploads.new(upload_params)
     @upload.file.attach(upload_params[:file])
-    @upload.save!
-    redirect_to root_path
+    if @upload.save
+      redirect_to root_path, notice: "File Upload Created successfully"
+    else
+      redirect_back(fallback_location: root_path, alert: "File could not be uploaded. #{@upload.errors.map{|a| (a.options[:message])}.join(". ") }")
+    end
   end
 
   def destroy
