@@ -8,8 +8,7 @@ class Upload < ApplicationRecord
   validates :file, size: { less_than: 1.gigabytes, message: 'File is too large' }
 
   def compress_big_files
-    return if file.content_type == "application/zip"
-    return if file.byte_size <= 52428800 # Compress only if file size greater than 50 MB
+    return if file.byte_size <= 50.megabytes # Compress only if file size greater than 50 MB
     zipped_filename = "#{file.filename.to_s}.gz"
     tempfile = Tempfile.new()
     begin
