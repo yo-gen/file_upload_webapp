@@ -89,6 +89,4 @@ test:
 #
 production:
   <<: *default
-  database: file_upload_webapp_production
-  username: file_upload_webapp
-  password: <%= ENV["FILE_UPLOAD_WEBAPP_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
