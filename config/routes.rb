@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   root "uploads#index"
   devise_for :users
   resources :uploads, only: [:index, :new, :create, :destroy]
+
+  get '/tl/:short_url', to: 'tiny_links#show', as: 'tiny_link'
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_06_162201) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_07_140814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_06_162201) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "tiny_links", force: :cascade do |t|
+    t.string "short_url"
+    t.integer "clicks"
+    t.bigint "upload_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["upload_id"], name: "index_tiny_links_on_upload_id"
+  end
+
   create_table "uploads", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -65,5 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_06_162201) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "tiny_links", "uploads"
   add_foreign_key "uploads", "users"
 end
