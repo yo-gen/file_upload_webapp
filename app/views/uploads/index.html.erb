@@ -33,7 +33,7 @@
                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= upload.created_at %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Member</td>
                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                      <%= link_to "Delete", upload_path(upload), data: { turbo_method: :delete, turbo_confirm: "This action cannot be undone. Are you sure you want to continue deleting?" }, class: "text-indigo-600 hover:text-indigo-900" %>
                     </td>
                 </tr>
               <% end %>

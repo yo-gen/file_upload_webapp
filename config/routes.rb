@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "uploads#index"
   devise_for :users
-  resources :uploads, only: [:index, :new, :create]
+  resources :uploads, only: [:index, :new, :create, :destroy]
 end

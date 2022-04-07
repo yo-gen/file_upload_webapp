@@ -16,6 +16,12 @@ class UploadsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    @upload = current_user.uploads.find(params[:id])
+    @upload.destroy
+    redirect_to root_path
+  end
+
   private
 
   def upload_params
