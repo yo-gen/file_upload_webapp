@@ -35,8 +35,8 @@
                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= upload.title %></td>
                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= upload.description %></td>
                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= upload.created_at %></td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= link_to "Download", rails_blob_path(upload.file, disposition: "attachment") %></td>
-                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= tiny_link_url(short_url: upload.tiny_link.short_url) if upload.tiny_link.present? %></td>
+                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= link_to "Download", rails_blob_path(upload.file, disposition: "attachment"), class: "inline-flex items-center justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:w-auto" %></td>
+                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= link_to tiny_link_url(short_url: upload.tiny_link.short_url), tiny_link_url(short_url: upload.tiny_link.short_url), class: "text-blue-600 hover:text-blue-900" if upload.tiny_link.present? %></td>
                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <%= link_to "Delete", upload_path(upload), data: { turbo_method: :delete, turbo_confirm: "This action cannot be undone. Are you sure you want to continue deleting?" }, class: "text-indigo-600 hover:text-indigo-900" %>
                         </td>
